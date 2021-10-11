@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Group" representedClassName=".Group" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="sort" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="places" toMany="YES" deletionRule="Nullify" destinationEntity="RealNamePlace" inverseName="group" inverseEntity="RealNamePlace"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="RealNamePlace" representedClassName=".RealNamePlace" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="message" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="places" inverseEntity="Group"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="message"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="Group" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="RealNamePlace" positionX="-54" positionY="9" width="128" height="89"/>
+    </elements>
+</model>
