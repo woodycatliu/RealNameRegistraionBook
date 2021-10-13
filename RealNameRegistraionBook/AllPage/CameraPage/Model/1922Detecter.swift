@@ -30,7 +30,6 @@ class QRCodeDetecter: BarcodeDetecterProtocol {
             errorSMS.append(sms)
         }
         
-        UINotificationFeedbackGenerator().notificationOccurred(.error)
         return errorSMS.isEmpty ?
             .failure(QRCodeDetectError.isNotSMS) :
             .failure(QRCodeDetectError.isNot1922(errorSMS))
