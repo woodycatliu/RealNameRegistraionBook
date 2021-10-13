@@ -2,7 +2,7 @@
 # platform :ios, '9.0'
 
 def firebase_install
- pod 'GoogleMLKit/BarcodeScanning', '2.2.0'
+ pod 'GoogleMLKit/BarcodeScanning', '2.4.0'
  pod 'Google-Mobile-Ads-SDK'
 end
 
@@ -10,7 +10,7 @@ target 'RealNameRegistraionBook' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # firebase_install
+   firebase_install
 
   target 'RealNameRegistraionBookTests' do
     inherit! :search_paths
