@@ -24,7 +24,7 @@ class LaunchViewController: UIViewController {
         label1922.animate()
         labelMessage.animate()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.launchedFinished()
         }
         
@@ -79,7 +79,6 @@ class Label1922: UIView {
     }
     
     func animate() {
-    
         UIView.animate(withDuration: 0.2, animations: {
             self.label.alpha = 1
         } , completion: { bool in
@@ -90,7 +89,7 @@ class Label1922: UIView {
         
     }
     private func rorate() {
-        UIView.animate(withDuration: 1, delay: 0.06, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0.015, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, animations: {
             self.label.transform = CGAffineTransform.init(rotationAngle: -.pi / 5)
         }, completion: { bool in
             if bool {
@@ -128,7 +127,7 @@ class LabelMessage: UIView {
     
     
     func animate() {
-        UIView.animate(withDuration: 0.2, delay: 0.1, animations: {
+        UIView.animate(withDuration: 0.05, delay: 0.025, animations: {
             self.topConstraint?.constant = -30
             self.superview?.layoutIfNeeded()
         }, completion: { bool in
@@ -136,7 +135,7 @@ class LabelMessage: UIView {
                 let orign = self.frame
                 self.layer.anchorPoint = .init(x: 0.5, y: 0)
                 self.frame = orign
-                UIView.animate(withDuration: 0.25, delay: 0, animations: {
+                UIView.animate(withDuration: 0.0625, delay: 0, animations: {
                     self.transform = CGAffineTransform(scaleX: 1, y: 0.5)
                 }, completion: { bool in
                     if bool {
