@@ -16,8 +16,9 @@ typealias MLBarcode = Barcode
 typealias CaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer
 
 protocol BarcodeDetecterProtocol: AnyObject {
+    var inSampleBufferSize: CGSize? { get set }
     func checkBarcodeFrame(_ frames: [CGRect], inSampleBufferSize size: CGSize, validScanObjectFrame: CGRect?)-> Bool
-    func detectBarcodes(_ barcodes: [MLBarcode])-> Result<[Any], Error>
+    func detectBarcodes(_ barcodes: [MLBarcode], previewLayer: AVCaptureVideoPreviewLayer)-> Result<[Any], Error>
 }
 
 extension BarcodeDetecterProtocol {
@@ -209,7 +210,7 @@ extension QRCodeScanner: AVCaptureVideoDataOutputSampleBufferDelegate {
             videoPreviewLayer.drawBarcodeIndicator(frames: barcodesFrame, color: barcodeIndicatorColor)
         }
         
-        let result = barcodeDetecter.detectBarcodes(barcodes)
+        let result = barcodeDetecter.detectBarcodes(barcodes, previewLayer: videoPreviewLayer)
         
         switch result {
         case .success(let results):
@@ -322,8 +323,8 @@ extension AVCaptureVideoPreviewLayer {
             layer.path = bezierPath.cgPath
             layer.fillColor = UIColor.clear.cgColor
             layer.strokeColor = color.cgColor
-            layer.lineDashPattern = [30, 30]
-            layer.lineWidth = 5
+            layer.lineDashPattern = [10, 10]
+            layer.lineWidth = 3
             layer.lineCap = .round
             layer.lineDashPhase = 0
             addSublayer(layer)

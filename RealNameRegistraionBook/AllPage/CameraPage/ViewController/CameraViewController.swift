@@ -37,6 +37,7 @@ class CameraViewController: UIViewController {
         scaner.videoPreviewLayer = cameraView.videoPreviewLayer
         cameraView.videoPreviewLayer.session = scaner.captureSession
         scaner.videoPreviewLayer = cameraView.videoPreviewLayer
+        scaner.isShowBarcodeIndicator = false
         scaner.delegate = self
         cameraView.addGestureRecognizer(UIPinchGestureRecognizer(target: scaner, action: #selector(scaner.pinchToZoom(_:))))
         
