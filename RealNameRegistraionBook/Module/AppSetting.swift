@@ -31,7 +31,8 @@ extension AppSetting {
         static let textDark: UIColor = .init(hex: "082032")
         static let textSecondDark: UIColor = .init(hex: "2C394B")
         static let darkBlue: UIColor = .init(hex: "00A8CC")
-        static let mainBlue: UIColor = .init(hex: "93B5C6")
+//        static let mainBlue: UIColor = .init(hex: "93B5C6")
+        static let mainBlue: UIColor = .init(hex: "64CCDA")
         static let white: UIColor = .init(hex: "FEFBF3")
         static let background: UIColor = .init(hex: "F7F6F2")
     }

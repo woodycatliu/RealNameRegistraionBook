@@ -11,15 +11,7 @@ import UIKit
 extension UIColor {
     
     static let mainColor: UIColor = {
-        return UIColor(hex: "5BE3FF")
-    }()
-    
-    static let mainLightGreen: UIColor = {
-        return UIColor(red: 160 / 255, green: 251 / 255, blue: 253 / 255, alpha: 0.155)
-    }()
-    
-    static let mainBackground: UIColor = {
-        return .rgba(rgb: 248, a: 1)
+        return UIColor(hex: "64CCDA")
     }()
     
     static let pink: UIColor = {

@@ -46,6 +46,7 @@ class SMSStorageViewController: UIViewController {
        let sv = UIStackView()
         sv.distribution = .fill
         sv.alignment = .fill
+        sv.axis = .horizontal
         return sv
     }()
         
@@ -112,7 +113,7 @@ class SMSStorageViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        GoogleAdsadapter.shared.register(vc: self)
+        GoogleAdsadapter.shared.register(vc: self, type: .main)
     }
     
     private func setNavigation() {

@@ -142,10 +142,6 @@ extension RouterProtocol {
                 topVC.scrollToTop()
                 return false
             }
-        
-        }
-        else {
-            tabBarController.selectedIndex = index
         }
         
         return true

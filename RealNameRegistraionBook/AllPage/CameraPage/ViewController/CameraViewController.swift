@@ -46,6 +46,14 @@ class CameraViewController: UIViewController {
     
     private let toast = QRCodeScanerToastView()
     
+    private let stackView: UIStackView = {
+        let sv = UIStackView()
+        sv.axis = .horizontal
+        sv.alignment = .fill
+        sv.distribution = .fill
+        return sv
+    }()
+    
     private var autoSafe: Bool = false
     
     override func viewDidLoad() {
@@ -54,14 +62,15 @@ class CameraViewController: UIViewController {
         qrcodeScaner.setQRCodeScanner()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        GoogleAdsadapter.shared.register(vc: self, type: .camera)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
         qrcodeScaner.startCamera()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -77,6 +86,10 @@ class CameraViewController: UIViewController {
         effectView.fillSuperview()
         view.addSubview(cameraView)
         cameraView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)
+        
+        view.addSubview(stackView)
+        stackView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)
+        
         view.addSubview(toast)
         toast.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 24, bottom: 0, right: 24))
         
@@ -151,4 +164,13 @@ extension CameraViewController: QRCodeScannerDelegate {
         guard let error = error as? QRCodeDetectError else { return }
         handleError(error)
     }
+}
+
+// MARK: ViewControllerAdsDelegae
+extension CameraViewController: ViewControllerAdsDelegae {
+    
+    func addBannerViewToView(bannerView: BannerView) {
+        stackView.addArrangedSubview(bannerView)
+    }
+    
 }

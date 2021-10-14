@@ -16,13 +16,28 @@ typealias BannerView = GADBannerView
 
 class GoogleAdsadapter: NSObject {
     
+    enum BannerType: Int, CustomStringConvertible {
+        case main
+        case camera
+        var description: String {
+            switch self {
+            case .main:
+                return "main"
+            case .camera:
+                return "camera"
+            }
+        }
+    }
+    
     static let shared: GoogleAdsadapter = GoogleAdsadapter()
     
-    weak var delegate: ViewControllerAdsDelegae?
+//    weak var delegate: ViewControllerAdsDelegae?
     
-    var bannerView: GADBannerView?
+    private var delegates: WeakDictionary<ViewControllerAdsDelegae> = WeakDictionary<ViewControllerAdsDelegae>()
+    
+    var bannerViews: [Int: GADBannerView] = [:]
         
-    func register(vc: ViewControllerAdsDelegae) {
+    func register(vc: ViewControllerAdsDelegae, type: BannerType) {
         let bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         #if DEBUG
         bannerView.adUnitID = AppSetting.googleTestID
@@ -32,8 +47,9 @@ class GoogleAdsadapter: NSObject {
         bannerView.rootViewController = vc as? UIViewController
         bannerView.delegate = self
         bannerView.load(GADRequest())
-        self.bannerView = bannerView
-        delegate = vc
+        bannerView.tag = type.rawValue
+        bannerViews[type.rawValue] = bannerView
+        delegates.addDelegate(delegate: vc, identifier: type.description)
     }
     
 }
@@ -42,8 +58,11 @@ class GoogleAdsadapter: NSObject {
 extension GoogleAdsadapter: GADBannerViewDelegate {
     
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        guard let type = BannerType.init(rawValue: bannerView.tag) else { return }
         Logger.log(message: "bannerViewDidReceiveAd")
-        delegate?.addBannerViewToView(bannerView: bannerView)
+//        delegate?.addBannerViewToView(bannerView: bannerView)
+        delegates[type.description]?.addBannerViewToView(bannerView: bannerView)
+
         bannerView.alpha = 0
           UIView.animate(withDuration: 1, animations: {
             bannerView.alpha = 1

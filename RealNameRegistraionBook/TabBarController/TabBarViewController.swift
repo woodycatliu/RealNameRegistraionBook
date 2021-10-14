@@ -11,9 +11,9 @@ import Combine
 
 class TabBarViewController: UITabBarController {
     
-    let normalColor: UIColor = UIColor.init(hex: "A8E7E9")
-    
-    let highlightedColor: UIColor = .mainColor
+    let normalColor: UIColor = UIColor.init(hex: "B5DEFF")
+//    let normalColor: UIColor = UIColor.init(hex: "28FFBF")
+    let highlightedColor: UIColor = .init(hex: "C0FEFC")
     
     private var anycancellables = Set<AnyCancellable>()
     
@@ -22,7 +22,7 @@ class TabBarViewController: UITabBarController {
         btn.isOn = AppSetting.shared.isAutoSafe
         btn.addTarget(self, action: #selector(safeAction(_:)), for: .valueChanged)
         btn.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-        btn.onTintColor = .mainColor
+        btn.onTintColor = normalColor
         return btn
     }()
     
@@ -130,7 +130,8 @@ class TabBarViewController: UITabBarController {
             return
         }
         
-        tabBar.unselectedItemTintColor = .init(hex: "C4E4E5")
+        tabBar.unselectedItemTintColor = .init(hex: "64CCDA")
+//        tabBar.unselectedItemTintColor = .init(hex: "BCFFB9")
         tabBar.tintColor = .mainColor
         
     }
