@@ -1,6 +1,0 @@
-framework module Pods_RealNameRegistraionBook_RealNameRegistraionBookUITests {
-  umbrella header "Pods-RealNameRegistraionBook-RealNameRegistraionBookUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

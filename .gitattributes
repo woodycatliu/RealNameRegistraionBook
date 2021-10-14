@@ -281,3 +281,4 @@ Pods/GTMSessionFetcher filter=lfs diff=lfs merge=lfs -text
 .git/objects/05 filter=lfs diff=lfs merge=lfs -text
 .git/objects/a4 filter=lfs diff=lfs merge=lfs -text
 .git/objects/d9 filter=lfs diff=lfs merge=lfs -text
+*.csv filter=lfs diff=lfs merge=lfs -text

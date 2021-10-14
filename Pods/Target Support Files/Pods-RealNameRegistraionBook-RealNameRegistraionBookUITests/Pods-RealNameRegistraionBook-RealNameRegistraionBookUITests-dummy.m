@@ -1,5 +1,0 @@
-#import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_RealNameRegistraionBook_RealNameRegistraionBookUITests : NSObject
-@end
-@implementation PodsDummy_Pods_RealNameRegistraionBook_RealNameRegistraionBookUITests
-@end
