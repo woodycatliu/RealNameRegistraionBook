@@ -23,7 +23,6 @@ extension LogManager {
         /// - 採集時機： 上傳成功
         case storageClick
         
-        
         var parameters: [String : Any]? {
             
             switch self {

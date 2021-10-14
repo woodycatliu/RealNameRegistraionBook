@@ -25,11 +25,13 @@ class QRCodeDetecter: BarcodeDetecterProtocol {
             
             if phone == "1922" {
                 UINotificationFeedbackGenerator().notificationOccurred(.success)
+                LogManager.useTrack(event: .scan(result: .success))
                 return .success([sms])
             }
             errorSMS.append(sms)
         }
         
+        LogManager.useTrack(event: .scan(result: .failed))
         return errorSMS.isEmpty ?
             .failure(QRCodeDetectError.isNotSMS) :
             .failure(QRCodeDetectError.isNot1922(errorSMS))

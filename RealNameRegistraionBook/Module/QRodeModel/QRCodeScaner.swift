@@ -58,7 +58,7 @@ class QRCodeScanner: NSObject {
     var isShowBarcodeIndicator: Bool = true
     
     /// 偵測到的Barcode 外框顏色
-    var barcodeIndicatorColor: UIColor = .init(red: 51/255, green: 234/255, blue: 14/255, alpha: 1)
+    var barcodeIndicatorColor: UIColor = .init(hex: "3EDBF0")
     
     var scanTimeBetween = 1.0
     
@@ -309,19 +309,21 @@ extension QRCodeScanner: AVCaptureVideoDataOutputSampleBufferDelegate {
 
 extension AVCaptureVideoPreviewLayer {
     
+    static let QRCodeIndicatorKey: String = "QRCodeIndicator"
+    
     func drawBarcodeIndicator(frames: [CGRect], color: UIColor = .init(red: 51/255, green: 234/255, blue: 14/255, alpha: 1)) {
         removeBarcodeIndicator()
         
         frames.forEach {
             let bezierPath = UIBezierPath(rect: $0)
             let layer = CAShapeLayer()
-            layer.name = "QRCodeIndicator"
+            layer.name = AVCaptureVideoPreviewLayer.QRCodeIndicatorKey
             layer.frame = bounds
             layer.path = bezierPath.cgPath
             layer.fillColor = UIColor.clear.cgColor
             layer.strokeColor = color.cgColor
-            layer.lineDashPattern = [10, 10]
-            layer.lineWidth = 2
+            layer.lineDashPattern = [30, 30]
+            layer.lineWidth = 5
             layer.lineCap = .round
             layer.lineDashPhase = 0
             addSublayer(layer)
@@ -330,7 +332,7 @@ extension AVCaptureVideoPreviewLayer {
     
     func removeBarcodeIndicator() {
         sublayers?.forEach {
-            if $0.name == "QRCodeIndicator" {
+            if $0.name == AVCaptureVideoPreviewLayer.QRCodeIndicatorKey {
                 $0.removeFromSuperlayer()
             }
         }
