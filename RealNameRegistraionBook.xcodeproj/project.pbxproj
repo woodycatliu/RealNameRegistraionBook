@@ -67,6 +67,12 @@
 		5B9550B927004E6500FAB84D /* 1922Detecter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9550B827004E6500FAB84D /* 1922Detecter.swift */; };
 		5B9550BB2700642800FAB84D /* Router_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9550BA2700642800FAB84D /* Router_extension.swift */; };
 		5B9550BE270064C700FAB84D /* UserDefaultKey+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9550BD270064C700FAB84D /* UserDefaultKey+Extension.swift */; };
+		5B9695C42717BB8A00769172 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9695C32717BB8A00769172 /* LogManager.swift */; };
+		5B9695C62717BBC000769172 /* FirebaseAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9695C52717BBC000769172 /* FirebaseAnalyticsHelper.swift */; };
+		5B9695C82717BCF700769172 /* FlagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9695C72717BCF700769172 /* FlagManager.swift */; };
+		5B9695CA2717BE9D00769172 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B9695C92717BE9D00769172 /* GoogleService-Info.plist */; };
+		5B9695CC2717BF5F00769172 /* TabBarChangeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9695CB2717BF5F00769172 /* TabBarChangeEvent.swift */; };
+		5B9695CF2717C0AC00769172 /* UseTrackEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9695CE2717C0AC00769172 /* UseTrackEvent.swift */; };
 		5BC3FE102701643C005598DD /* RealNamePlace+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3FE0C2701643C005598DD /* RealNamePlace+CoreDataClass.swift */; };
 		5BC3FE112701643C005598DD /* RealNamePlace+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3FE0D2701643C005598DD /* RealNamePlace+CoreDataProperties.swift */; };
 		5BC3FE122701643C005598DD /* Group+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3FE0E2701643C005598DD /* Group+CoreDataClass.swift */; };
@@ -172,6 +178,12 @@
 		5B9550B827004E6500FAB84D /* 1922Detecter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1922Detecter.swift; sourceTree = "<group>"; };
 		5B9550BA2700642800FAB84D /* Router_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router_extension.swift; sourceTree = "<group>"; };
 		5B9550BD270064C700FAB84D /* UserDefaultKey+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaultKey+Extension.swift"; sourceTree = "<group>"; };
+		5B9695C32717BB8A00769172 /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		5B9695C52717BBC000769172 /* FirebaseAnalyticsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsHelper.swift; sourceTree = "<group>"; };
+		5B9695C72717BCF700769172 /* FlagManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagManager.swift; sourceTree = "<group>"; };
+		5B9695C92717BE9D00769172 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5B9695CB2717BF5F00769172 /* TabBarChangeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarChangeEvent.swift; sourceTree = "<group>"; };
+		5B9695CE2717C0AC00769172 /* UseTrackEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseTrackEvent.swift; sourceTree = "<group>"; };
 		5BC3FE0C2701643C005598DD /* RealNamePlace+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealNamePlace+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		5BC3FE0D2701643C005598DD /* RealNamePlace+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealNamePlace+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		5BC3FE0E2701643C005598DD /* Group+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -267,6 +279,7 @@
 		5B954FB926FE52E500FAB84D /* RealNameRegistraionBook */ = {
 			isa = PBXGroup;
 			children = (
+				5B9695C22717BB6B00769172 /* Manager */,
 				5BDDB4CA2706192900B47977 /* Adapter */,
 				5B9550AD2700417B00FAB84D /* AllPage */,
 				5B95508426FEA9DC00FAB84D /* CoreData */,
@@ -280,6 +293,7 @@
 				5B954FC626FE52E600FAB84D /* Assets.xcassets */,
 				5B954FC826FE52E600FAB84D /* LaunchScreen.storyboard */,
 				5B954FCB26FE52E600FAB84D /* Info.plist */,
+				5B9695C92717BE9D00769172 /* GoogleService-Info.plist */,
 				5B954FC326FE52E500FAB84D /* RealNameRegistraionBook.xcdatamodeld */,
 			);
 			path = RealNameRegistraionBook;
@@ -548,6 +562,26 @@
 			path = RealNameExtension;
 			sourceTree = "<group>";
 		};
+		5B9695C22717BB6B00769172 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				5B9695CD2717BFF300769172 /* Event */,
+				5B9695C72717BCF700769172 /* FlagManager.swift */,
+				5B9695C32717BB8A00769172 /* LogManager.swift */,
+				5B9695C52717BBC000769172 /* FirebaseAnalyticsHelper.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		5B9695CD2717BFF300769172 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				5B9695CB2717BF5F00769172 /* TabBarChangeEvent.swift */,
+				5B9695CE2717C0AC00769172 /* UseTrackEvent.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
 		5BC3FE1E2703FD1C005598DD /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -758,6 +792,7 @@
 			files = (
 				5B954FCA26FE52E600FAB84D /* LaunchScreen.storyboard in Resources */,
 				5B95507926FE55EC00FAB84D /* Program planning.md in Resources */,
+				5B9695CA2717BE9D00769172 /* GoogleService-Info.plist in Resources */,
 				5B954FC726FE52E600FAB84D /* Assets.xcassets in Resources */,
 				5B954FC226FE52E500FAB84D /* Main.storyboard in Resources */,
 			);
@@ -904,6 +939,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B9695C42717BB8A00769172 /* LogManager.swift in Sources */,
 				5BDDB4CF2706A5B500B47977 /* LaunchViewController.swift in Sources */,
 				5B95502C26FE553600FAB84D /* RouterProtocol.swift in Sources */,
 				5BC3FE372705B07A005598DD /* GroupSelectionTopView.swift in Sources */,
@@ -915,11 +951,14 @@
 				5B95500626FE543800FAB84D /* UIColor + CGColor.swift in Sources */,
 				5BC3FE112701643C005598DD /* RealNamePlace+CoreDataProperties.swift in Sources */,
 				5B95507426FE55EC00FAB84D /* UIImage.swift in Sources */,
+				5B9695CC2717BF5F00769172 /* TabBarChangeEvent.swift in Sources */,
 				5BC3FE102701643C005598DD /* RealNamePlace+CoreDataClass.swift in Sources */,
 				5B954FBD26FE52E500FAB84D /* SceneDelegate.swift in Sources */,
 				5B95506F26FE55EC00FAB84D /* CircleRenderer.swift in Sources */,
 				5B9550BE270064C700FAB84D /* UserDefaultKey+Extension.swift in Sources */,
 				5B95506C26FE55EC00FAB84D /* RhombusBuilder.swift in Sources */,
+				5B9695C62717BBC000769172 /* FirebaseAnalyticsHelper.swift in Sources */,
+				5B9695CF2717C0AC00769172 /* UseTrackEvent.swift in Sources */,
 				5B954FF126FE538E00FAB84D /* UIColor+Extension.swift in Sources */,
 				5BC3FE2927045B1F005598DD /* SMSStorageHeaderView.swift in Sources */,
 				5BC3FE352705AE8D005598DD /* AddNewHeaderView.swift in Sources */,
@@ -953,6 +992,7 @@
 				5BC3FE3F270600EB005598DD /* String+_Extension.swift in Sources */,
 				5B95507226FE55EC00FAB84D /* String_Extension.swift in Sources */,
 				5B954FF326FE539500FAB84D /* UIVIew+Extension.swift in Sources */,
+				5B9695C82717BCF700769172 /* FlagManager.swift in Sources */,
 				5BC3FE322705ADB7005598DD /* GroupSelectionViewController.swift in Sources */,
 				5B95507126FE55EC00FAB84D /* MarqueeRenderer.swift in Sources */,
 				5B95504B26FE558400FAB84D /* WeakDictionary.swift in Sources */,

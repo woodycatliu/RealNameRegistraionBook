@@ -154,6 +154,7 @@ extension TabBarViewController {
 extension TabBarViewController {
     @objc
     private func safeAction(_ switchBtn: UISwitch) {
+        LogManager.tabBarChange(tabBarType: .autoSafe)
         let bool = switchBtn.isOn
         AppSetting.shared.isAutoSafe = switchBtn.isOn
         safeLabel.textColor = bool ? highlightedColor : normalColor
@@ -164,6 +165,11 @@ extension TabBarViewController {
 extension TabBarViewController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if let index = viewControllers?.firstIndex(of: viewController) {
+            guard let type = TabBarType.init(rawValue: index) else { return }
+            // 埋點
+            LogManager.tabBarChange(tabBarType: type)
+        }
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {

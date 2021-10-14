@@ -9,13 +9,22 @@ import UIKit
 import CoreData
 import GoogleMobileAds
 import AppTrackingTransparency
+import FirebaseAnalytics
+import Firebase
 
 
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    private(set) var fireBaseInstanceId: String = ""
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        FirebaseApp.configure()
+        firebaseInstanceID()
+
+        
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.requestAppTrackingTransparency()
@@ -67,4 +76,16 @@ extension AppDelegate {
           }
       }
 
+    func firebaseInstanceID() {
+        Installations.installations().installationID {[weak self] id, error in
+            if let error = error {
+                Logger.log(message: error, apiCaller: self)
+            }
+            else if let id = id {
+                self?.fireBaseInstanceId = id
+            }
+        }
+    }
+    
+    
 }
