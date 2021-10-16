@@ -226,6 +226,13 @@ extension CoreDataService {
         coreDataStack.saveContext()
     }
     
+    func changeGroupName(indexPath: IndexPath, name: String) {
+        guard let group = getGroup(indexPath.row) else { return }
+        group.name = name
+        coreDataStack.saveContext()
+    }
+    
+    
 }
 
 extension CoreDataService {

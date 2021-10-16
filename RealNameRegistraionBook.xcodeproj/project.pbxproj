@@ -1197,7 +1197,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20211015;
+				CURRENT_PROJECT_VERSION = 2021101601;
 				DEVELOPMENT_TEAM = 52W935AVL3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RealNameRegistraionBook/Info.plist;
@@ -1217,7 +1217,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodyLiu.RealNameRegistraionBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1238,7 +1238,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20211015;
+				CURRENT_PROJECT_VERSION = 2021101601;
 				DEVELOPMENT_TEAM = HMB28F9R4H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RealNameRegistraionBook/Info.plist;
@@ -1258,7 +1258,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodyLiu.RealNameRegistraionBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

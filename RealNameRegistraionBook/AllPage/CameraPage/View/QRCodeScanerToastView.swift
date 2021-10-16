@@ -102,7 +102,7 @@ class QRCodeScanerToastView: UIView {
     }
     
     func show(isShowing: Bool) {
-        self.bottomConstraint?.constant = isShowing ? -30 : 200
+        self.bottomConstraint?.constant = isShowing ? -15 : 200
         UIView.animate(withDuration: 0.5) {
             self.superview?.layoutIfNeeded()
         }

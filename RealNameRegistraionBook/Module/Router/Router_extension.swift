@@ -71,7 +71,6 @@ extension Router {
         Router.shared.showCustomAlertController(alertController: controller)
     }
     
-    
 }
 
 
@@ -80,8 +79,12 @@ extension Router {
     func editGroupAlertController(toastView: ToastAlertView) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
+        let changeAction = UIAlertAction(title: "變更資料夾名稱", style: .default, handler: { _ in
+            self.showDeleteGroupSelectionViewController(style: .changeName)
+        })
+        
         let deleteAction = UIAlertAction(title: "刪除資料夾", style: .default, handler: { _ in
-            self.showDeleteGroupSelectionViewController()
+            self.showDeleteGroupSelectionViewController(style: .delete)
         })
         
         let addAction = UIAlertAction(title: "新增資料夾", style: .default, handler: { _ in
@@ -91,13 +94,13 @@ extension Router {
         let cancelAction = UIAlertAction(title: "取消".localized(), style: .cancel, handler: nil)
         
         cancelAction.setValue(AppSetting.Color.textSecondDark, forKey: "titleTextColor")
-        
+        changeAction.setValue(AppSetting.Color.textSecondDark, forKey: "titleTextColor")
         deleteAction.setValue(AppSetting.Color.textSecondDark, forKey: "titleTextColor")
         addAction.setValue(AppSetting.Color.textSecondDark, forKey: "titleTextColor")
         
         
-        
         controller.addAction(addAction)
+        controller.addAction(changeAction)
         controller.addAction(deleteAction)
         controller.addAction(cancelAction)
         
@@ -105,8 +108,8 @@ extension Router {
     }
     
     @discardableResult
-    func showDeleteGroupSelectionViewController()-> GroupSelectionViewController {
-        let path = GroupSelectionViewController.GroupSelectionRouterPath()
+    func showDeleteGroupSelectionViewController(style: GroupSelectionViewController.Style)-> GroupSelectionViewController {
+        let path = GroupSelectionViewController.GroupSelectionRouterPath(style: style)
         return presentViewController(router: path, animation: true, completeion: nil) as! GroupSelectionViewController
     }
     

@@ -93,7 +93,7 @@ class CameraViewController: UIViewController {
         view.addSubview(toast)
         toast.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 24, bottom: 0, right: 24))
         
-        toast.bottomConstraint = toast.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 200)
+        toast.bottomConstraint = toast.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: 200)
         toast.bottomConstraint?.isActive = true
     }
     
@@ -115,7 +115,10 @@ extension CameraViewController: Send1922Protocol {
     }
     
     private func handle1922SMS(_ sms: SMSBocode) {
-        guard let message = sms.message else { return }
+        guard let message = sms.message else {
+            qrcodeScaner.startScan = true
+            return
+        }
         toast.show(isShowing: false)
         send1922(message: message)
         

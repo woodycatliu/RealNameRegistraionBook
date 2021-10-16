@@ -10,6 +10,12 @@ import UIKit
 
 extension GroupSelectionViewController {
     
+    enum Style {
+        case delete
+        case changeName
+        case places
+    }
+    
     struct GroupSelectionRouterPath: RouterPathable {
         var vcType: Routable.Type {
            return GroupSelectionViewController.self
@@ -20,8 +26,8 @@ extension GroupSelectionViewController {
             params = [GroupSelectionViewController.ParamsKey.places.rawValue: places]
         }
         
-        init() {
-            params = nil
+        init(style: GroupSelectionViewController.Style) {
+            params = [GroupSelectionViewController.ParamsKey.style.rawValue: style]
         }
     }
     
@@ -70,8 +76,9 @@ class GroupSelectionViewController: UIViewController {
     
     private let service: CoreDataService = .shared
     
-//    private var indexPaths: [IndexPath]?
     private var places: [RealNamePlace]?
+    
+    private var style: Style = .delete
     
     /// 主要視覺都裝在contentView
     private let contentView: UIView = UIView()
@@ -86,12 +93,15 @@ class GroupSelectionViewController: UIViewController {
     private lazy var translucentView = UIView()
     
     private lazy var tableView: UITableView = {
-        let tv = UITableView(frame: .zero, style: .grouped)
+        let tv = UITableView(frame: .zero, style: .plain)
         tv.backgroundColor = .rgba(rgb: 255, a: 1)
         tv.separatorStyle = .none
         tv.dataSource = self
         tv.delegate = self
         tv.bounces = false
+        if #available(iOS 15.0, *) {
+            tv.sectionHeaderTopPadding = .init(0)
+        } 
         tv.register(GroupSelectionTableViewCell.self, forCellReuseIdentifier: GroupSelectionTableViewCell.description())
         tv.register(AddNewHeaderView.self, forHeaderFooterViewReuseIdentifier: AddNewHeaderView.description())
         return tv
@@ -103,7 +113,14 @@ class GroupSelectionViewController: UIViewController {
     
     convenience init(places: [RealNamePlace]?) {
         self.init()
+        self.style = .places
         self.places = places
+    }
+    
+    convenience init(style: Style) {
+        self.init()
+        self.style = style
+        self.places = nil
     }
     
     override func viewDidLoad() {
@@ -156,7 +173,7 @@ class GroupSelectionViewController: UIViewController {
 extension GroupSelectionViewController: Routable {
     
     enum ParamsKey: String {
-        case indexPaths
+        case style
         case places
     }
     
@@ -165,6 +182,9 @@ extension GroupSelectionViewController: Routable {
         
         if let places = params?[ParamsKey.places.rawValue] as? [RealNamePlace] {
              vc = GroupSelectionViewController(places: places)
+        }
+        else if let style = params?[ParamsKey.style.rawValue] as? Style {
+            vc = GroupSelectionViewController(style: style)
         }
         else {
             vc = GroupSelectionViewController()
@@ -280,14 +300,17 @@ extension GroupSelectionViewController: UITableViewDataSource {
 extension GroupSelectionViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard style != .changeName else { return 0 }
         return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        guard style != .changeName else { return 0 }
         return 60
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard style != .changeName else { return nil }
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: AddNewHeaderView.description()) as! AddNewHeaderView
         header.tapPress = { [weak self] in
             self?.addNewList()
@@ -301,12 +324,51 @@ extension GroupSelectionViewController: UITableViewDelegate {
         if let places = self.places {
             service.removeToGroup(places: places, groupSection: indexPath.row)
         }
-        else {
+        else if style == .delete {
             service.deleteGroup(section: indexPath.row)
         }
+        else {
+            changeGroupNameAlertController(indexPath: indexPath)
+            return
+        }
+    
         dismissVC()
     }
     
+    func changeGroupNameAlertController(indexPath: IndexPath) {
+        let controller = UIAlertController(title: "更改名稱", message: nil, preferredStyle: .alert)
+        
+        controller.addTextField(configurationHandler: { textField in
+            textField.textColor = AppSetting.Color.textDark
+        })
+        
+        let confirmAction = UIAlertAction(title: "確定".localized(), style: .default, handler: { _ in
+            guard let textField = controller.textFields?.first else { return }
+            
+            guard let text = textField.text,
+                  !text.isBlank else {
+                      self.toastView.show(message: "請輸入資料夾名稱".localized())
+                      return }
+            
+            if let _ = CoreDataService.shared.checkGroupExists(name: text) {
+                self.toastView.show(message: "已經有相同的分組囉".localized())
+                return
+            }
+            CoreDataService.shared.changeGroupName(indexPath: indexPath, name: text)
+            self.dismissVC()
+        })
+        
+        confirmAction.setValue(AppSetting.Color.textSecondDark, forKey: "titleTextColor")
+        
+        let cancelAction = UIAlertAction(title: "取消".localized(), style: .default, handler: nil)
+        cancelAction.setValue(AppSetting.Color.textSecondDark, forKey: "titleTextColor")
+        
+        controller.addAction(cancelAction)
+        
+        controller.addAction(confirmAction)
+        
+        Router.shared.showCustomAlertController(alertController: controller)
+    }
     
 }
 

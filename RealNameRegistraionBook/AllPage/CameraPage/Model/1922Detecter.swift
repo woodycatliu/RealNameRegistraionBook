@@ -10,6 +10,11 @@ import AVFoundation
 
 
 class QRCodeDetecter: BarcodeDetecterProtocol {
+    struct Colors {
+        static let correctQRCode: UIColor = .init(hex: "3EDBF0")
+        static let errorQRCode: UIColor = .init(hex: "FF4646")
+    }
+    
     var inSampleBufferSize: CGSize?
     
     func checkBarcodeFrame(_ frames: [CGRect], inSampleBufferSize size: CGSize, validScanObjectFrame: CGRect?) -> Bool {
@@ -26,15 +31,18 @@ class QRCodeDetecter: BarcodeDetecterProtocol {
         for barcode in barcodes {
             guard let sms = barcode.sms,
                   let phone = sms.phoneNumber
-            else { continue }
+            else {
+                drawBarcodeIndicator(barcode: barcode, previewLayer: previewLayer, color: Colors.errorQRCode)
+                continue
+            }
             
             if phone == "1922" {
-                drawBarcodeIndicator(barcode: barcode, previewLayer: previewLayer, color: .init(hex: "3EDBF0"))
+                drawBarcodeIndicator(barcode: barcode, previewLayer: previewLayer, color: Colors.correctQRCode)
                 successSMS.append(sms)
                 //                return .success([sms])
             }
             else {
-                drawBarcodeIndicator(barcode: barcode, previewLayer: previewLayer, color: .init(hex: "FF4646"))
+                drawBarcodeIndicator(barcode: barcode, previewLayer: previewLayer, color: Colors.errorQRCode)
                 errorSMS.append(sms)
             }
         }
