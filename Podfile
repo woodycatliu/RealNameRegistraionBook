@@ -17,7 +17,7 @@ target 'RealNameRegistraionBook' do
   target 'RealNameRegistraionBookTests' do
     inherit! :search_paths
     # Pods for testing
-   firebase_install
+    firebase_install
   end
 
   target 'RealNameRegistraionBookUITests' do

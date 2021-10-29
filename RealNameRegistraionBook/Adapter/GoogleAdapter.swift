@@ -38,6 +38,9 @@ class GoogleAdsadapter: NSObject {
     var bannerViews: [Int: GADBannerView] = [:]
         
     func register(vc: ViewControllerAdsDelegae, type: BannerType) {
+        if let _ = bannerViews[type.rawValue] {
+            return
+        }
         let bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         #if DEBUG
         bannerView.adUnitID = AppSetting.googleTestID
