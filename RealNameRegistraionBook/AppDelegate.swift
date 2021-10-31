@@ -11,6 +11,7 @@ import GoogleMobileAds
 import AppTrackingTransparency
 import FirebaseAnalytics
 import Firebase
+import FBAudienceNetwork
 
 
 
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         firebaseInstanceID()
+        FBAdSettings.setAdvertiserTrackingEnabled(true)
 
         
         GADMobileAds.sharedInstance().start(completionHandler: nil)

@@ -113,6 +113,7 @@ class SMSStorageViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        guard stackView.arrangedSubviews.isEmpty else { return }
         GoogleAdsadapter.shared.register(vc: self, type: .main)
     }
     

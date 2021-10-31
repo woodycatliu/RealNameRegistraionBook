@@ -1,4 +1,7 @@
 PODS:
+  - FBAudienceNetwork (6.8.0):
+    - FBSDKCoreKit_Basics
+  - FBSDKCoreKit_Basics (12.0.2)
   - Firebase/Analytics (8.8.0):
     - Firebase/Core
   - Firebase/Core (8.8.0):
@@ -134,12 +137,15 @@ PODS:
   - Protobuf (3.18.1)
 
 DEPENDENCIES:
+  - FBAudienceNetwork
   - Firebase/Analytics
   - Google-Mobile-Ads-SDK
   - GoogleMLKit/BarcodeScanning (= 2.4.0)
 
 SPEC REPOS:
   trunk:
+    - FBAudienceNetwork
+    - FBSDKCoreKit_Basics
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -163,6 +169,8 @@ SPEC REPOS:
     - Protobuf
 
 SPEC CHECKSUMS:
+  FBAudienceNetwork: 9f9887e50468e83d3524540bea2a1db37c3fe90b
+  FBSDKCoreKit_Basics: c0701d1634c944d60dd3c6361d66dbd0e707a456
   Firebase: 629510f1a9ddb235f3a7c5c8ceb23ba887f0f814
   FirebaseAnalytics: 5506ea8b867d8423485a84b4cd612d279f7b0b8a
   FirebaseCore: 98b29e3828f0a53651c363937a7f7d92a19f1ba2
@@ -185,6 +193,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   Protobuf: 0ac2cdc92fb5c33dab66dd1c4e9f9cc4c34d00ba
 
-PODFILE CHECKSUM: 2a249ecdbf6f0450dbdef24c0e5da17c19485f83
+PODFILE CHECKSUM: ed53210cd2cf9968c7943287bc4635e707edaca1
 
 COCOAPODS: 1.11.2

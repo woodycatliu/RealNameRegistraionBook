@@ -5,6 +5,7 @@ def firebase_install
  pod 'GoogleMLKit/BarcodeScanning', '2.4.0'
  pod 'Google-Mobile-Ads-SDK'
  pod 'Firebase/Analytics'
+ pod 'FBAudienceNetwork'
 
 end
 

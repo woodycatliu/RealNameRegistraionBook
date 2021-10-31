@@ -64,7 +64,9 @@ class CameraViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        GoogleAdsadapter.shared.register(vc: self, type: .camera)
+        //        GoogleAdsadapter.shared.register(vc: self, type: .camera)
+        guard stackView.arrangedSubviews.isEmpty else { return }
+        FacebookAdapter.shared.register(viewController: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -176,4 +178,11 @@ extension CameraViewController: ViewControllerAdsDelegae {
         stackView.addArrangedSubview(bannerView)
     }
     
+}
+
+// MARK: ViewControllerFBAdsDelegae
+extension CameraViewController: ViewControllerFBAdsDelegae {
+    func addAdViewToView(adView: AdView) {
+        stackView.addArrangedSubview(adView)
+    }
 }
