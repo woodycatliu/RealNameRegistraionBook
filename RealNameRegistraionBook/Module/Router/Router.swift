@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class Router: RouterProtocol {
     
@@ -24,6 +25,9 @@ class Router: RouterProtocol {
     @Storage(key: .isFirstLaunch, defaultValue: true)
     var isFirstLaunch: Bool
     
+    @Published
+    var isLaunchedApp: Bool = false
+    
     private init(){}
     
     weak var window: UIWindow?
@@ -39,7 +43,15 @@ extension Router {
     
     @discardableResult
     func selectedViewController(type: TabBarType)-> Bool {
-        return selectedViewController(type.rawValue)
+        guard let tabBarController = tabBarController,
+              let viewControllers = tabBarController.viewControllers,
+              viewControllers.indices.contains(type.rawValue) else { return false }
+        let viewController = viewControllers[type.rawValue]
+        
+        self.navigationController = viewController as? UINavigationController
+        
+        tabBarController.selectedIndex = type.rawValue
+        return true
     }
     
     @discardableResult

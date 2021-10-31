@@ -18,7 +18,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         AppSetting.shared.setNavigationBar()
         Router.shared.window = window
         _ = CoreDataService.shared
+        _ = NotificationManager.shared
         Router.shared.launchedApplecation()
+        
+        if let context = connectionOptions.urlContexts.first(where: { $0.url.scheme == "game"}){
+            NotificationManager.shared.transitionTarget(target: context.url.absoluteString)
+        }
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}
@@ -32,7 +38,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidEnterBackground(_ scene: UIScene) {
         CoreDataService.shared.coreDataStack.saveContext()
     }
-
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let url = URLContexts.first?.url {
+            NotificationManager.shared.transitionTarget(target: url.absoluteString)
+        }
+    }
 
 }
 

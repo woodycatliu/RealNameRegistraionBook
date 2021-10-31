@@ -30,6 +30,8 @@ extension Router {
         
         window?.makeKeyAndVisible()
         
+        isLaunchedApp = true
+        
     }
 }
 

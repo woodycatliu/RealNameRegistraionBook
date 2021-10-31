@@ -10,6 +10,14 @@
 		318ABB70361BD82EEA9C654E /* Pods_RealNameRegistraionBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC59A05B0C402071937AC7E /* Pods_RealNameRegistraionBook.framework */; };
 		38C14F195F9A5F4F5138813E /* Pods_RealNameRegistraionBookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CD716AB996357F299AB34F /* Pods_RealNameRegistraionBookTests.framework */; };
 		5140DE924308F57FCFCC84BD /* Pods_RealNameRegistraionBook_RealNameRegistraionBookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF982843932981E9D2AA153 /* Pods_RealNameRegistraionBook_RealNameRegistraionBookUITests.framework */; };
+		5B785C9B272B7FC60085C751 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B785C9A272B7FC60085C751 /* WidgetKit.framework */; };
+		5B785C9D272B7FC60085C751 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B785C9C272B7FC60085C751 /* SwiftUI.framework */; };
+		5B785CA0272B7FC60085C751 /* RealNameRegistraionBookWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B785C9F272B7FC60085C751 /* RealNameRegistraionBookWidget.swift */; };
+		5B785CA3272B7FC70085C751 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B785CA2272B7FC70085C751 /* Assets.xcassets */; };
+		5B785CA5272B7FC70085C751 /* RealNameRegistraionBookWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5B785CA1272B7FC60085C751 /* RealNameRegistraionBookWidget.intentdefinition */; };
+		5B785CA6272B7FC70085C751 /* RealNameRegistraionBookWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5B785CA1272B7FC60085C751 /* RealNameRegistraionBookWidget.intentdefinition */; };
+		5B785CA9272B7FC70085C751 /* RealNameRegistraionBookWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B785C99272B7FC60085C751 /* RealNameRegistraionBookWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B785CAF272BF13D0085C751 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B785CAE272BF13D0085C751 /* NotificationManager.swift */; };
 		5B954FBB26FE52E500FAB84D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B954FBA26FE52E500FAB84D /* AppDelegate.swift */; };
 		5B954FBD26FE52E500FAB84D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B954FBC26FE52E500FAB84D /* SceneDelegate.swift */; };
 		5B954FBF26FE52E500FAB84D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B954FBE26FE52E500FAB84D /* ViewController.swift */; };
@@ -97,6 +105,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5B785CA7272B7FC70085C751 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B954FAF26FE52E500FAB84D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B785C98272B7FC60085C751;
+			remoteInfo = RealNameRegistraionBookWidgetExtension;
+		};
 		5B954FD126FE52E600FAB84D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5B954FAF26FE52E500FAB84D /* Project object */;
@@ -113,10 +128,32 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5B785CAA272B7FC70085C751 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5B785CA9272B7FC70085C751 /* RealNameRegistraionBookWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		296BE1C7B78C5544D47295F6 /* Pods-RealNameRegistraionBookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealNameRegistraionBookTests.debug.xcconfig"; path = "Target Support Files/Pods-RealNameRegistraionBookTests/Pods-RealNameRegistraionBookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		346EF0F1A287C4575FD52114 /* Pods-RealNameRegistraionBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealNameRegistraionBook.debug.xcconfig"; path = "Target Support Files/Pods-RealNameRegistraionBook/Pods-RealNameRegistraionBook.debug.xcconfig"; sourceTree = "<group>"; };
 		3D50AF72CB89EB1443F8FF8E /* Pods-RealNameRegistraionBookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealNameRegistraionBookTests.release.xcconfig"; path = "Target Support Files/Pods-RealNameRegistraionBookTests/Pods-RealNameRegistraionBookTests.release.xcconfig"; sourceTree = "<group>"; };
+		5B785C99272B7FC60085C751 /* RealNameRegistraionBookWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RealNameRegistraionBookWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B785C9A272B7FC60085C751 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5B785C9C272B7FC60085C751 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		5B785C9F272B7FC60085C751 /* RealNameRegistraionBookWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealNameRegistraionBookWidget.swift; sourceTree = "<group>"; };
+		5B785CA1272B7FC60085C751 /* RealNameRegistraionBookWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = RealNameRegistraionBookWidget.intentdefinition; sourceTree = "<group>"; };
+		5B785CA2272B7FC70085C751 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B785CA4272B7FC70085C751 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B785CAE272BF13D0085C751 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5B954FB726FE52E500FAB84D /* RealNameRegistraionBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealNameRegistraionBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B954FBA26FE52E500FAB84D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B954FBC26FE52E500FAB84D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +251,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5B785C96272B7FC60085C751 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B785C9D272B7FC60085C751 /* SwiftUI.framework in Frameworks */,
+				5B785C9B272B7FC60085C751 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B954FB426FE52E500FAB84D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -254,12 +300,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5B785C9E272B7FC60085C751 /* RealNameRegistraionBookWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B785C9F272B7FC60085C751 /* RealNameRegistraionBookWidget.swift */,
+				5B785CA1272B7FC60085C751 /* RealNameRegistraionBookWidget.intentdefinition */,
+				5B785CA2272B7FC70085C751 /* Assets.xcassets */,
+				5B785CA4272B7FC70085C751 /* Info.plist */,
+			);
+			path = RealNameRegistraionBookWidget;
+			sourceTree = "<group>";
+		};
 		5B954FAE26FE52E500FAB84D = {
 			isa = PBXGroup;
 			children = (
 				5B954FB926FE52E500FAB84D /* RealNameRegistraionBook */,
 				5B954FD326FE52E600FAB84D /* RealNameRegistraionBookTests */,
 				5B954FDD26FE52E600FAB84D /* RealNameRegistraionBookUITests */,
+				5B785C9E272B7FC60085C751 /* RealNameRegistraionBookWidget */,
 				5B954FB826FE52E500FAB84D /* Products */,
 				3925E4C060F5CBC2663D63C0 /* Pods */,
 				B7272DB32DC342787CF4F37B /* Frameworks */,
@@ -272,6 +330,7 @@
 				5B954FB726FE52E500FAB84D /* RealNameRegistraionBook.app */,
 				5B954FD026FE52E600FAB84D /* RealNameRegistraionBookTests.xctest */,
 				5B954FDA26FE52E600FAB84D /* RealNameRegistraionBookUITests.xctest */,
+				5B785C99272B7FC60085C751 /* RealNameRegistraionBookWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -569,6 +628,7 @@
 				5B9695C72717BCF700769172 /* FlagManager.swift */,
 				5B9695C32717BB8A00769172 /* LogManager.swift */,
 				5B9695C52717BBC000769172 /* FirebaseAnalyticsHelper.swift */,
+				5B785CAE272BF13D0085C751 /* NotificationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -676,6 +736,8 @@
 				ADC59A05B0C402071937AC7E /* Pods_RealNameRegistraionBook.framework */,
 				BDF982843932981E9D2AA153 /* Pods_RealNameRegistraionBook_RealNameRegistraionBookUITests.framework */,
 				65CD716AB996357F299AB34F /* Pods_RealNameRegistraionBookTests.framework */,
+				5B785C9A272B7FC60085C751 /* WidgetKit.framework */,
+				5B785C9C272B7FC60085C751 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -683,6 +745,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5B785C98272B7FC60085C751 /* RealNameRegistraionBookWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B785CAD272B7FC70085C751 /* Build configuration list for PBXNativeTarget "RealNameRegistraionBookWidgetExtension" */;
+			buildPhases = (
+				5B785C95272B7FC60085C751 /* Sources */,
+				5B785C96272B7FC60085C751 /* Frameworks */,
+				5B785C97272B7FC60085C751 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RealNameRegistraionBookWidgetExtension;
+			productName = RealNameRegistraionBookWidgetExtension;
+			productReference = 5B785C99272B7FC60085C751 /* RealNameRegistraionBookWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		5B954FB626FE52E500FAB84D /* RealNameRegistraionBook */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B954FE426FE52E600FAB84D /* Build configuration list for PBXNativeTarget "RealNameRegistraionBook" */;
@@ -692,10 +771,12 @@
 				5B954FB426FE52E500FAB84D /* Frameworks */,
 				5B954FB526FE52E500FAB84D /* Resources */,
 				70A60B6DCD52264C9C0F98F5 /* [CP] Embed Pods Frameworks */,
+				5B785CAA272B7FC70085C751 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5B785CA8272B7FC70085C751 /* PBXTargetDependency */,
 			);
 			name = RealNameRegistraionBook;
 			productName = RealNameRegistraionBook;
@@ -752,6 +833,9 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					5B785C98272B7FC60085C751 = {
+						CreatedOnToolsVersion = 13.0;
+					};
 					5B954FB626FE52E500FAB84D = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -781,11 +865,20 @@
 				5B954FB626FE52E500FAB84D /* RealNameRegistraionBook */,
 				5B954FCF26FE52E600FAB84D /* RealNameRegistraionBookTests */,
 				5B954FD926FE52E600FAB84D /* RealNameRegistraionBookUITests */,
+				5B785C98272B7FC60085C751 /* RealNameRegistraionBookWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5B785C97272B7FC60085C751 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B785CA3272B7FC70085C751 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B954FB526FE52E500FAB84D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -935,6 +1028,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B785C95272B7FC60085C751 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B785CA5272B7FC70085C751 /* RealNameRegistraionBookWidget.intentdefinition in Sources */,
+				5B785CA0272B7FC60085C751 /* RealNameRegistraionBookWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B954FB326FE52E500FAB84D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -945,6 +1047,7 @@
 				5BC3FE372705B07A005598DD /* GroupSelectionTopView.swift in Sources */,
 				5B95507326FE55EC00FAB84D /* CGAffineTrabsform_Extension.swift in Sources */,
 				5B954FBF26FE52E500FAB84D /* ViewController.swift in Sources */,
+				5B785CAF272BF13D0085C751 /* NotificationManager.swift in Sources */,
 				5B954FBB26FE52E500FAB84D /* AppDelegate.swift in Sources */,
 				5B954FF926FE53E500FAB84D /* StringExtension.swift in Sources */,
 				5BC3FE3B2705E836005598DD /* PreviewViewViewController.swift in Sources */,
@@ -969,6 +1072,7 @@
 				5B9550B12700433600FAB84D /* CameraViewController.swift in Sources */,
 				5BC3FE24270406CA005598DD /* SMSStorageCellViewModel.swift in Sources */,
 				5B95506D26FE55EC00FAB84D /* OceanWaveEffect.swift in Sources */,
+				5B785CA6272B7FC70085C751 /* RealNameRegistraionBookWidget.intentdefinition in Sources */,
 				5B954FEF26FE538600FAB84D /* UIFont+Extension.swift in Sources */,
 				5B954FF726FE53CC00FAB84D /* UIImageExtension.swift in Sources */,
 				5B95502B26FE553600FAB84D /* Router.swift in Sources */,
@@ -1038,6 +1142,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5B785CA8272B7FC70085C751 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B785C98272B7FC60085C751 /* RealNameRegistraionBookWidgetExtension */;
+			targetProxy = 5B785CA7272B7FC70085C751 /* PBXContainerItemProxy */;
+		};
 		5B954FD226FE52E600FAB84D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5B954FB626FE52E500FAB84D /* RealNameRegistraionBook */;
@@ -1070,6 +1179,64 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5B785CAB272B7FC70085C751 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 52W935AVL3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RealNameRegistraionBookWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RealNameRegistraionBookWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.woodyLiu.RealNameRegistraionBook.RealNameRegistraionBookWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5B785CAC272B7FC70085C751 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HMB28F9R4H;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RealNameRegistraionBookWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RealNameRegistraionBookWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.woodyLiu.RealNameRegistraionBook.RealNameRegistraionBookWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		5B954FE226FE52E600FAB84D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1190,6 +1357,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 346EF0F1A287C4575FD52114 /* Pods-RealNameRegistraionBook.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BITCODE_GENERATION_MODE = "-fembed-bitcode-marker";
@@ -1231,6 +1399,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FCD97C9E66B0665ADFFFDFDD /* Pods-RealNameRegistraionBook.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BITCODE_GENERATION_MODE = "-fembed-bitcode";
@@ -1371,6 +1540,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B785CAD272B7FC70085C751 /* Build configuration list for PBXNativeTarget "RealNameRegistraionBookWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B785CAB272B7FC70085C751 /* Debug */,
+				5B785CAC272B7FC70085C751 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5B954FB226FE52E500FAB84D /* Build configuration list for PBXProject "RealNameRegistraionBook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
