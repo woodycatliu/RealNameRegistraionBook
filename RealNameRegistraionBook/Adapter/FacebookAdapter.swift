@@ -7,6 +7,7 @@
 
 import Foundation
 import FBAudienceNetwork
+import UIKit
 
 typealias AdView = FBAdView
 
@@ -26,7 +27,8 @@ class FacebookAdapter: NSObject {
     
     func register(viewController vc: ViewControllerFBAdsDelegae) {
         let adView = FBAdView(placementID: FacebookAdapter.placementId, adSize: kFBAdSizeHeight50Banner, rootViewController: vc as? UIViewController)
-        adView.frame = CGRect(x: 0, y: 0, width: 320, height: 250)
+        adView.frame = CGRect(x: 0, y: 0, width: 320, height: 50)
+        adView.withSize(.init(width: 320, height: 50))
         delegate = vc
         adView.delegate = self
         adView.loadAd()
@@ -39,7 +41,7 @@ class FacebookAdapter: NSObject {
 extension FacebookAdapter: FBAdViewDelegate {
     
     func adView(_ adView: FBAdView, didFailWithError error: Error) {
-        Logger.log(message: "Ad failed to load with error: \(error.localizedDescription)")
+        Logger.log(message: "Ad failed to load with error: \(error)")
         adView.removeFromSuperview()
     }
 

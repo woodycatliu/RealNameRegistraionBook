@@ -60,8 +60,6 @@ struct RealNameRegistraionBookWidgetEntryView : View {
     
 }
 
-
-
 @main
 struct RealNameRegistraionBookWidget: Widget {
     let kind: String = "RealNameRegistraionBookWidget"
@@ -70,8 +68,6 @@ struct RealNameRegistraionBookWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             RealNameRegistraionBookWidgetEntryView(entry: entry)
         }
-//        .configurationDisplayName("My Widget")
-//        .description("This is an example widget.")
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }

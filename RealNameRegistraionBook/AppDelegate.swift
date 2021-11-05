@@ -12,8 +12,7 @@ import AppTrackingTransparency
 import FirebaseAnalytics
 import Firebase
 import FBAudienceNetwork
-
-
+import AdSupport
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         firebaseInstanceID()
+        
+        FBAudienceNetworkAds.initialize(with: nil, completionHandler: nil)
+
         FBAdSettings.setAdvertiserTrackingEnabled(true)
 
         
@@ -31,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.requestAppTrackingTransparency()
         }
+        
+        Logger.log(message: "IDFA: \( getIDFA())")
         
         return true
     }
@@ -90,4 +94,21 @@ extension AppDelegate {
     }
     
     
+}
+
+extension AppDelegate {
+    func getIDFA() -> String? {
+        // Check whether advertising tracking is enabled
+        if #available(iOS 14, *) {
+            if ATTrackingManager.trackingAuthorizationStatus != ATTrackingManager.AuthorizationStatus.authorized  {
+                return nil
+            }
+        } else {
+            if ASIdentifierManager.shared().isAdvertisingTrackingEnabled == false {
+                return nil
+            }
+        }
+
+        return ASIdentifierManager.shared().advertisingIdentifier.uuidString
+    }
 }
