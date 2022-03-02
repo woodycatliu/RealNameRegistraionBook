@@ -39,7 +39,12 @@ protocol QRCodeScannerDelegate: AnyObject {
 
 class QRCodeScanner: NSObject {
     
-    weak var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    weak var videoPreviewLayer: AVCaptureVideoPreviewLayer? {
+        didSet {
+            /// 限制鏡頭 Output 在 videoPreviewLayer bounds 內
+            videoPreviewLayer?.videoGravity = .resizeAspectFill
+        }
+    }
     
     private let barcodeDetecter: BarcodeDetecterProtocol
     
@@ -71,9 +76,7 @@ class QRCodeScanner: NSObject {
         let cs = AVCaptureSession()
         return cs
     }()
-    
-    let captureVideoDataOutput = AVCaptureVideoDataOutput()
-    
+        
     var captureVideoDataInput: AVCaptureDeviceInput?
     
     lazy var barcodeScanner: BarcodeScanner = {
@@ -89,44 +92,22 @@ class QRCodeScanner: NSObject {
     }
     
     func setQRCodeScanner() {
-        guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
+        guard let captureDevice = AVCaptureDevice.default(for: .video),
+              let input = try? AVCaptureDeviceInput(device: captureDevice)
+        else { return }
         
-        if captureDevice.isFocusModeSupported(.continuousAutoFocus) {
-            try? captureDevice.lockForConfiguration()
-            captureDevice.focusMode = .continuousAutoFocus
-            captureDevice.exposureMode = .autoExpose
-            captureDevice.unlockForConfiguration()
-        }
+        let output = AVCaptureVideoDataOutput.exclusiveOfProject
+        output.setSampleBufferDelegate(self, queue: .main)
         
-        if captureDevice.isWhiteBalanceModeSupported(.autoWhiteBalance) {
-            try? captureDevice.lockForConfiguration()
-            captureDevice.whiteBalanceMode = .autoWhiteBalance
-            captureDevice.unlockForConfiguration()
-        }
+        captureDevice.setContinuousAutoFocus()
+        
+        captureDevice.setAutoWhiteBalance()
+        
+        confugireCaptureSessionIntOutPut(input, output)
 
-        
-        guard let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
-        captureSession.beginConfiguration()
-        
-        captureSession.canSetSessionPreset(.low)
-        captureSession.addInput(input)
         captureVideoDataInput = input
         
-        /// 影片檔像素，提供空值會依照設備預設
-        captureVideoDataOutput.videoSettings = [ (kCVPixelBufferPixelFormatTypeKey as String): kCVPixelFormatType_32BGRA]
-        captureVideoDataOutput.alwaysDiscardsLateVideoFrames = true
-    
-        
-        captureSession.addOutput(captureVideoDataOutput)
-        captureSession.commitConfiguration()
-
-        
-        captureVideoDataOutput.setSampleBufferDelegate(self, queue: .main)
-        /// 限制鏡頭 Output 在 videoPreviewLayer bounds 內
-        videoPreviewLayer?.videoGravity = .resizeAspectFill
-        
         isCameraReady = true
-        startCamera()
     }
     
     
@@ -150,6 +131,14 @@ class QRCodeScanner: NSObject {
         }
         lastScanTime = Date().timeIntervalSince1970
         return true
+    }
+    
+    private func confugireCaptureSessionIntOutPut(_ input: AVCaptureDeviceInput, _ output: AVCaptureVideoDataOutput) {
+        captureSession.beginConfiguration()
+        captureSession.canSetSessionPreset(.low)
+        captureSession.addInput(input)
+        captureSession.addOutput(output)
+        captureSession.commitConfiguration()
     }
     
 }
@@ -369,4 +358,36 @@ extension QRCodeScanner {
         
     
     
+}
+
+extension AVCaptureDevice {
+    
+    func setContinuousAutoFocus() {
+        if isFocusModeSupported(.continuousAutoFocus) {
+            try? lockForConfiguration()
+            focusMode = .continuousAutoFocus
+            exposureMode = .autoExpose
+            unlockForConfiguration()
+        }
+    }
+    
+    func setAutoWhiteBalance() {
+        if isWhiteBalanceModeSupported(.autoWhiteBalance) {
+            try? lockForConfiguration()
+            whiteBalanceMode = .autoWhiteBalance
+            unlockForConfiguration()
+        }
+    }
+    
+}
+
+
+extension AVCaptureVideoDataOutput {
+    class var exclusiveOfProject: AVCaptureVideoDataOutput {
+        let output = AVCaptureVideoDataOutput()
+        /// 影片檔像素，提供空值會依照設備預設
+        output.videoSettings = [ (kCVPixelBufferPixelFormatTypeKey as String): kCVPixelFormatType_32BGRA]
+        output.alwaysDiscardsLateVideoFrames = true
+        return output
+    }
 }
